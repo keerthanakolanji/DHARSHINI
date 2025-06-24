@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Birthday Surprise</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #ffe6eb;
+            overflow: hidden;
+            transition: background 1s;
+        }
+        
+        .container {
+            z-index: 10;
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+        }
+        
+        #clickButton {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        #clickButton:hover {
+            transform: scale(1.05);
+            box-shadow: 0 7px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        #surpriseMessage {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            animation: fadeIn 1s;
+            overflow-y: auto;
+            max-height: 70vh;
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        h1 {
+            color: #d23669;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        #surpriseMessage p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+        
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float linear infinite;
+        }
+        
+        @keyframes float {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Happy Birthday Animation */
+        .birthday-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 3px 3px 0 #fff, 5px 5px 0 #ff6b6b;
+            opacity: 0;
+            z-index: 20;
+            animation: birthdayPop 3s ease-out forwards;
+        }
+        
+        @keyframes birthdayPop {
+            0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+            20% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            30% { transform: translate(-50%, -50%) scale(1); }
+            80% { opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+        }
+        
+        /* Scrollbar styling */
+        #surpriseMessage::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #surpriseMessage::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        #surpriseMessage::-webkit-scrollbar-thumb {
+            background: #ff6b6b;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="clickButton">Click Here for a Surprise!</button>
+        <div id="surpriseMessage">
+            <h1>unkita onnu solanum❤️</h1>
+            <p>enaku unna romba pudikum more than a friend ithuvara naan sonathula and kaatunathula naan healthcentre porathukulaam yen naa koopdulana nee enna distrub ah irukanonu ethathu nenachuruviyonu koopdama avangala kootitu ponen neengalaan venumnuthaan naan intha roomku vanthan thaniya irukamaari irukum apolaam summa pakathu roomla snegapriyakooda poitu okanthu ethathu polambitu irupen .en aalu thaa apo apo athula onula vidu nu soli manasa thethiruvaa... inonu naan 10th padikaravara neraya frnds irunthaanga clse ah oru incident aachu athu rahul aprm nss la oru paiyan sonenla avana thavara yaarukum theriyathu athu enakum inum marakamudila naan mostly apo apo thaniya irukathe ithaan reason enala epovume jolly ah irukamudila ithu mind la odite irukum overcome panamudila thoughts vante irukum athunalaiye naan epovum thaniya yosichite irupen attitude kaatito apdilaa illa therila naan veliya yaarutaiyume sonathila apdiye manasula vachiye pazhagiduchu....unta solanunu thonuchu d anyways happy ah iru krishna nala paiyan i feel avana entha reasonkaagavum breakup panidatha avan epovum unnoda healer ah irupan dont't miss him..bday happy ah celebrate pannu be happy as always..neraya lifela achieve pananum main thing happy ah irukanum ethathukagum happiness tholachirathe..</p>
+            <p style="text-align: center; font-weight: bold;">epovum sonathula ipo solren I love you! 💖</p>
+        </div>
+    </div>
+    
+    <div class="hearts" id="heartsContainer"></div>
+
+    <script>
+        const button = document.getElementById('clickButton');
+        const message = document.getElementById('surpriseMessage');
+        const heartsContainer = document.getElementById('heartsContainer');
+        
+        button.addEventListener('click', function() {
+            // Hide button and show message
+            button.style.display = 'none';
+            message.style.display = 'block';
+            
+            // Show Happy Birthday animation
+            showBirthdayAnimation();
+            
+            // Create floating hearts
+            createHearts();
+            
+            // Change background color
+            document.body.style.background = 'linear-gradient(135deg, #ffcce6, #ffb3d9)';
+            
+            // Continue creating hearts periodically
+            setInterval(createHearts, 300);
+        });
+        
+        function showBirthdayAnimation() {
+            const birthdayText = document.createElement('div');
+            birthdayText.className = 'birthday-text';
+            birthdayText.textContent = 'Happy Birthday!';
+            document.body.appendChild(birthdayText);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                birthdayText.remove();
+            }, 3000);
+        }
+        
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            
+            // Random properties
+            const size = Math.random() * 30 + 20;
+            const duration = Math.random() * 10 + 5;
+            const delay = Math.random() * 5;
+            const left = Math.random() * 100;
+            const rotation = Math.random() * 360;
+            const opacity = Math.random() * 0.5 + 0.5;
+            
+            // Apply styles
+            heart.style.fontSize = `${size}px`;
+            heart.style.left = `${left}vw`;
+            heart.style.bottom = '-50px';
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.animationDelay = `${delay}s`;
+            heart.style.opacity = opacity;
+            heart.style.transform = `rotate(${rotation}deg)`;
+            heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+            
+            heartsContainer.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+    </script>
+</body>
+</html>

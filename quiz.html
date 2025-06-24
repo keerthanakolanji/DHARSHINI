@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: lightblue;
+            padding: 20px;
+        }
+        .quiz-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-box">
+        <h2>Quick Quiz</h2>
+        <p>Enta irunthu enna venumnu aasapadra ethathu things venuma ila ethathu enta solanuma anything??</p>
+        <input type="radio" name="color" id="pink"> <label for="pink">enta solanumna dm pannu</label><br>
+        <input type="radio" name="color" id="blue"> <label for="blue">solamatan</label><br>
+        <input type="radio" name="color" id="pink"> <label for="pink">apdi onu illa</label><br>
+        
+        <button onclick="showSurprise()">See Special Surprise!</button>
+    </div>
+
+    <script>
+        function showSurprise() {
+            // Make sure the birthday.html file is in the same folder
+            window.location.href = "birthday.html";
+        }
+    </script>
+</body>
+</html>
